@@ -2,6 +2,8 @@ using TechTalk.SpecFlow;
 using Xamarin.UITest;
 using Should;
 using System.Linq;
+using NUnit.Framework;
+using System;
 
 namespace BddWithXamarinUITest
 {
@@ -28,21 +30,20 @@ namespace BddWithXamarinUITest
 		[When (@"I enter zipcode ""(.*)""")]
 		public void WhenIEnterZipCode(string zipCode)
 		{
+			app.ClearText(homeScreen.enterPostCode);
 			app.EnterText(homeScreen.enterPostCode, zipCode);
 		}
 
 		[When (@"I choose to Get Weather")]
 		public void WhenIChooseToGetWeather ()
 		{
-			app.Tap (homeScreen.getWeatherButton);
+			app.Tap(homeScreen.getWeatherButton);
 		}
 
 		[Then (@"I verify home screen")]
 		public void ThenIVerifyHomescreen()
 		{
 			app.WaitForElement(homeScreen.homeScreenHeader);
-			//app.WaitForElement(homeScreen.searchByZipCode);
-			//app.WaitForElement(homeScreen.zipCode);
 			app.WaitForElement(homeScreen.enterPostCode);
 			app.WaitForElement(homeScreen.getWeatherButton);
 		}

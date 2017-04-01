@@ -64,25 +64,162 @@ namespace BddWithXamarinUITest
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify Home screen")]
-        [NUnit.Framework.CategoryAttribute("addTask")]
-        public virtual void VerifyHomeScreen()
+        [NUnit.Framework.DescriptionAttribute("Search weather using postcode and city names")]
+        [NUnit.Framework.TestCaseAttribute("\"IG2 7NZ\"", "\"Redbridge\"", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("\"London\"", "\"London\"", new string[0])]
+        public virtual void SearchWeatherUsingPostcodeAndCityNames(string zipcode, string location, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Home screen", new string[]
-                {
-                        "addTask"});
-#line 5
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search weather using postcode and city names", exampleTags);
+#line 4
   this.ScenarioSetup(scenarioInfo);
-#line 6
+#line 5
     testRunner.Given("I am on the Home screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 7
+#line 6
     testRunner.Then("I verify home screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 8
+#line 7
     testRunner.Then("I verify weather screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 8
+    testRunner.When(string.Format("I enter zipcode {0}", zipcode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
-    testRunner.When("I enter zipcode \"IG2 7NZ\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 10
     testRunner.And("I choose to Get Weather", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 10
+    testRunner.Then(string.Format("I must see Location as {0}", location), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify weather details")]
+        public virtual void VerifyWeatherDetails()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify weather details", ((string[])(null)));
+#line 17
+  this.ScenarioSetup(scenarioInfo);
+#line 18
+    testRunner.Given("I am on the Home screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 19
+    testRunner.Then("I verify home screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 20
+    testRunner.Then("I verify weather screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 21
+    testRunner.When("I enter zipcode \"London\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 22
+    testRunner.And("I choose to Get Weather", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 23
+   testRunner.Then("I must see Location as \"London\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 24
+   testRunner.And("Temperature is shown in Fahrenhite", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 25
+   testRunner.And("Windspeed is shown in mph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 26
+   testRunner.And("Humidity is shown as percentage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 27
+   testRunner.And("Visibility is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 28
+   testRunner.And("Time of Sunrise is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 29
+   testRunner.And("Time of Sunset is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify wrong post codes")]
+        [NUnit.Framework.TestCaseAttribute("\"Trrrrr\"", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("\"00000\"", new string[0])]
+        public virtual void VerifyWrongPostCodes(string zipcode, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify wrong post codes", exampleTags);
+#line 31
+ this.ScenarioSetup(scenarioInfo);
+#line 32
+    testRunner.Given("I am on the Home screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 33
+    testRunner.Then("I verify home screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 34
+    testRunner.Then("I verify weather screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 35
+    testRunner.When(string.Format("I enter zipcode {0}", zipcode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 36
+    testRunner.And("I choose to Get Weather", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 37
+    testRunner.Then("I must see Incorrect Location Error alert", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify Get weather text changes to Search again")]
+        public virtual void VerifyGetWeatherTextChangesToSearchAgain()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Get weather text changes to Search again", ((string[])(null)));
+#line 43
+  this.ScenarioSetup(scenarioInfo);
+#line 44
+    testRunner.Given("I am on the Home screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 45
+    testRunner.Then("I verify home screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 46
+    testRunner.Then("I verify weather screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 47
+    testRunner.When("I enter zipcode \"London\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 48
+    testRunner.And("I choose to Get Weather", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 49
+    testRunner.Then("I must see Get weather button text changed to search again", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Search weather using city Name")]
+        public virtual void SearchWeatherUsingCityName()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search weather using city Name", ((string[])(null)));
+#line 51
+  this.ScenarioSetup(scenarioInfo);
+#line 52
+    testRunner.Given("I am on the Home screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 53
+    testRunner.Then("I verify home screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 54
+    testRunner.Then("I verify weather screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 55
+    testRunner.When("I enter zipcode \"London\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 56
+    testRunner.And("I choose to Get Weather", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 57
+    testRunner.Then("I must see Location as \"London\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 58
+    testRunner.When("I enter zipcode \"London,GB\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 59
+    testRunner.And("I choose search again", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 60
+    testRunner.Then("I must see Location as \"London\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify Empty Alert messages")]
+        [NUnit.Framework.TestCaseAttribute("\"\"", new string[0])]
+        public virtual void VerifyEmptyAlertMessages(string zipcode, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Empty Alert messages", exampleTags);
+#line 63
+this.ScenarioSetup(scenarioInfo);
+#line 64
+    testRunner.Given("I am on the Home screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 65
+    testRunner.Then("I verify home screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 66
+    testRunner.Then("I verify weather screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 67
+    testRunner.When(string.Format("I enter zipcode {0}", zipcode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 68
+    testRunner.And("I choose to Get Weather", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 69
+    testRunner.Then("I must see empty zip code Error alert", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

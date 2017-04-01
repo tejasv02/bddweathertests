@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using Xamarin.UITest;
 using TechTalk.SpecFlow;
+using System;
 
 namespace BddWithXamarinUITest
 {
@@ -22,12 +23,29 @@ namespace BddWithXamarinUITest
 		}
 
 		[SetUp]
-		public void BeforeEachScenario ()
+		public void Before()
 		{
 			app = AppInitializer.StartApp (platform, iOSSimulator, resetDevice);
+			FeatureContext.Current.Clear();
+			FeatureContext.Current.Remove("App");
 			FeatureContext.Current.Add ("App", app);
 			AppInitializer.InitializeScreens (platform);
 		}
+
+		[Before]
+		public void BeforeEachScenario()
+		{
+			app = AppInitializer.StartApp(platform, iOSSimulator, resetDevice);
+			//FeatureContext.Current.Add("App", app);
+			//AppInitializer.InitializeScreens(platform);
+		}
+
+		[AfterScenarioBlock]
+		public void AfterEachScenario()
+		{
+			//FeatureContext.Current.Remove("App");
+		}
+
 	}
 
 }

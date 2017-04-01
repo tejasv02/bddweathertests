@@ -28,7 +28,7 @@ namespace BddWithXamarinUITest
 					.EnableLocalScreenshots ()
 					.AppBundle ("../../../binaries/WeatherAppiOS.app")
 					//.DeviceIdentifier(iOSSimulator)
-					.DeviceIdentifier("6F704F23-E36D-48DE-BD92-42CAA928F40B")
+					.DeviceIdentifier("7E45F0E8-173E-4BB3-983F-7CD1EF888E85")
 					.StartApp ();
 			}
 
